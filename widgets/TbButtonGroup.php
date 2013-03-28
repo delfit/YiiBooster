@@ -25,44 +25,56 @@ class TbButtonGroup extends CWidget
 	 * @see BootButton::buttonType
 	 */
 	public $buttonType = TbButton::BUTTON_LINK;
-	/**
+	
+    /**
 	 * @var string the button type.
 	 * @see BootButton::type
 	 */
 	public $type;
-	/**
+	
+    /**
 	 * @var string the button size.
 	 * @see BootButton::size
 	 */
 	public $size;
-	/**
+	
+    /**
 	 * @var boolean indicates whether to encode the button labels.
 	 */
 	public $encodeLabel = true;
-	/**
+	
+    /**
 	 * @var array the HTML attributes for the widget container.
 	 */
 	public $htmlOptions = array();
-	/**
+	
+    /**
 	 * @var array the button configuration.
 	 */
 	public $buttons = array();
-	/**
+	
+    /**
 	 * @var boolean indicates whether to enable button toggling.
 	 */
 	public $toggle;
-	/**
+	
+    /**
 	 * @var boolean indicates whether the button group appears vertically stacked. Defaults to 'false'.
 	 */
 	public $stacked = false;
-	/**
+	
+    /**
 	 * @var boolean indicates whether dropdowns should be dropups instead. Defaults to 'false'.
 	 */
 	public $dropup = false;
+	/**
+	 * @var boolean indicates whether button is disabled or not. Defaults to 'false'.
+	 */
+	public $disabled = false;
 
 	/**
-   *### .init()
-   *
+	 *### .init()
+	 *
 	 * Initializes the widget.
 	 */
 	public function init()
@@ -91,8 +103,8 @@ class TbButtonGroup extends CWidget
 	}
 
 	/**
-   *### .run()
-   *
+	 *### .run()
+	 *
 	 * Runs the widget.
 	 */
 	public function run()
@@ -112,13 +124,14 @@ class TbButtonGroup extends CWidget
 				'label'=>isset($button['label']) ? $button['label'] : null,
 				'url'=>isset($button['url']) ? $button['url'] : null,
 				'active'=>isset($button['active']) ? $button['active'] : false,
+				'disabled'=>isset($button['disabled']) ? $button['disabled'] : false,
 				'items'=>isset($button['items']) ? $button['items'] : array(),
 				'ajaxOptions'=>isset($button['ajaxOptions']) ? $button['ajaxOptions'] : array(),
 				'htmlOptions'=>isset($button['htmlOptions']) ? $button['htmlOptions'] : array(),
+                'dropdownOptions'=>isset($button['dropdownOptions']) ? $button['dropdownOptions'] : array(),
 				'encodeLabel'=>isset($button['encodeLabel']) ? $button['encodeLabel'] : $this->encodeLabel,
 			));
 		}
-
 		echo '</div>';
 	}
 }

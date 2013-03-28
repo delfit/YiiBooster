@@ -12,6 +12,8 @@ Yii::import('bootstrap.widgets.TbDataColumn');
 
 /**
  * Bootstrap Zii grid view.
+ *
+ * @property CActiveDataProvider $dataProvider the data provider for the view.
  */
 class TbGridView extends CGridView
 {
@@ -26,15 +28,18 @@ class TbGridView extends CGridView
 	 * Valid values are 'striped', 'bordered', ' condensed' and/or 'hover'.
 	 */
 	public $type;
+    
 	/**
 	 * @var string the CSS class name for the pager container. Defaults to 'pagination'.
 	 */
 	public $pagerCssClass = 'pagination';
+    
 	/**
 	 * @var array the configuration for the pager.
 	 * Defaults to <code>array('class'=>'ext.bootstrap.widgets.TbPager')</code>.
 	 */
 	public $pager = array('class'=>'bootstrap.widgets.TbPager');
+    
 	/**
 	 * @var string the URL of the CSS file used by this grid view.
 	 * Defaults to false, meaning that no CSS will be included.
@@ -52,8 +57,8 @@ class TbGridView extends CGridView
 	public $extraParams = array();
 
 	/**
-   *### .init()
-   *
+	 *### .init()
+	 *
 	 * Initializes the widget.
 	 */
 	public function init()
@@ -61,7 +66,6 @@ class TbGridView extends CGridView
 		parent::init();
 
 		$classes = array('table');
-
 		if (isset($this->type))
 		{
 			if (is_string($this->type))
@@ -103,8 +107,8 @@ class TbGridView extends CGridView
 	}
 
 	/**
-   *### .initColumns()
-   *
+	 *### .initColumns()
+	 *
 	 * Creates column objects and initializes them.
 	 */
 	protected function initColumns()
@@ -117,15 +121,15 @@ class TbGridView extends CGridView
 
 		parent::initColumns();
 
-		if($this->responsiveTable)
+		if ($this->responsiveTable)
 			$this->writeResponsiveCss();
 	}
 
 	/**
-   *### .createDataColumn()
-   *
+	 *### .createDataColumn()
+	 *
 	 * Creates a column based on a shortcut column specification string.
-   *
+	 *
 	 * @param mixed $text the column specification string
 	 * @return \TbDataColumn|\CDataColumn the column instance
 	 * @throws CException if the column format is incorrect
@@ -148,8 +152,8 @@ class TbGridView extends CGridView
 	}
 
 	/**
-   *### .writeReponsiveCss()
-   *
+	 *### .writeResponsiveCss()
+	 *
 	 * Writes responsiveCSS
 	 */
 	protected function writeResponsiveCss()
@@ -157,6 +161,7 @@ class TbGridView extends CGridView
 		$cnt = 1; $labels='';
 		foreach($this->columns as $column)
 		{
+            /** @var TbDataColumn $column */
 			ob_start();
 			$column->renderHeaderCell();
 			$name = strip_tags(ob_get_clean());

@@ -1,11 +1,11 @@
 # ChangeLog
 ## Special Thanks
-I would like to personally thank everyone of you that spend your valuable time helping improving this extension, by pointing out bugs and/or providing solutions that all of us can take advantage with. 
+I would like to personally thank everyone of you that spend your valuable time helping improving this extension, by pointing out bugs and/or providing solutions that all of us can take advantage with.
 
 Thank you all
 
 Antonio Ramirez
-Senior Web Developer  
+Senior Web Developer
 [www.clevertech.biz](http://www.clevertech.biz)
 
 ### YiiBooster version 1.0.6
@@ -22,7 +22,7 @@ Senior Web Developer
 - **(enh)** Added masked text field type #281 (tkijewski)
 - **(enh)** Added typeahead text field type #296 (tkijewski)
 - **(enh)** Added number field type (xt99)
-- **(enh)** TbToggleColumn now extends TbDataColumn #303 #323 (kev360) 
+- **(enh)** TbToggleColumn now extends TbDataColumn #303 #323 (kev360)
 - **(fix)** Ajax submit button does not force the POST method anymore #284 (yourilima)
 - **(fix)** Fixed TimePicker #314 (marsuboss)
 - **(fix)** Fixed bootstrap.datepicker.<lang>.js #341 (fdelprete)
@@ -31,7 +31,19 @@ Senior Web Developer
 - **(fix)** DateRangePicker TbActiveForm field row was not closed properly #352 (despro3)
 - **(enh)** Added a TbImageGallery widget #335 (magefad)
 - **(fix)** Allow to use url parameter in TbTabs #360 (magefad)
+- **(enh)** Add option "fontAwesomeCss" for to active Font Awesome CSS (marsuboss)
+- **(enh)** Fixed TbEditable - mode(modal|inline); language,support for datepicker, app lang by default (magefad)
+- **(fix)** Add option "disabled" on TbEditableField
+- **(enh)** Add empty (null) value display for TbToggleColumn ("icon-question-sign" icon with "Not Set" label) (magefad)
+- **(fix)** Fixed typeAheadField #396 (magefad)
+- **(fix)** StickyTableHeader issue dynamic cell width #338, updated js, added compressed js (magefad)
+- **(fix)** Keep document title when HTML5 history API is enabled (nevkontakte)
+- **(fix)** Fixed wrong behavior of TbJsonGridView when doing AJAX updates like row deletion when there is pagination (nevkontakte)
+- **(enh)** Bootstrap upgrade to 2.3.1 (magefad)
 - **(fix)** Added rowHtmlOptionsExpression support for TbExtendedGridView (xt99)
+- **(enh)** TbButtonGroup does not accept TbButton.dropdownOptions #149 (russ666)
+- **(enh)** Added GridView visual aid on hover for sorting (Wiseon3)
+- **(enh)** Updated daterangepicker plugin (magefad)
 
 ### YiiBooster version 1.0.5 
 

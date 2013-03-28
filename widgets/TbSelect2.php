@@ -28,6 +28,12 @@ class TbSelect2 extends CInputWidget
    * @var bool whether to display a dropdown select box or use it for tagging
    */
   public $asDropDownList = true;
+
+  /**
+   * @var string the default value.
+   */
+  public $val;
+
   /**
    * @var
    */
@@ -40,7 +46,7 @@ class TbSelect2 extends CInputWidget
    */
   public function init()
   {
-    if(empty($this->data) && $this->asDropDownList === true)
+    if (empty($this->data) && $this->asDropDownList === true)
       throw new CException(Yii::t('zii', '"data" attribute cannot be blank'));
   }
 
@@ -55,7 +61,7 @@ class TbSelect2 extends CInputWidget
 
     if ($this->hasModel())
     {
-      if($this->form)
+      if ($this->form)
         echo $this->asDropDownList?
           $this->form->dropDownList($this->model, $this->attribute, $this->data, $this->htmlOptions) :
           $this->form->hiddenField($this->model, $this->attribute, $this->htmlOptions);
@@ -85,8 +91,10 @@ class TbSelect2 extends CInputWidget
 
     $options = !empty($this->options) ? CJavaScript::encode($this->options) : '';
 
+    $defValue = !empty($this->val) ? ".select2('val', '$this->val')" : '';
+
     ob_start();
-    echo "jQuery('#{$id}').select2({$options})";
+    echo "jQuery('#{$id}').select2({$options})$defValue";
     foreach ($this->events as $event => $handler)
       echo ".on('{$event}', " . CJavaScript::encode($handler) . ")";
 
