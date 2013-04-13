@@ -242,10 +242,10 @@ class TbExtendedGridView extends TbGridView
 	public function renderKeys()
 	{
 		$data = $this->dataProvider->getData();
-
 		if (empty($data))
-			 return false;
-		if (!$this->sortableRows || !$this->getAttribute($data[0], $this->sortableAttribute))
+			return false;
+
+		if (!$this->sortableRows || !$this->getAttribute($data[0], (string)$this->sortableAttribute))
 			parent::renderKeys();
 
 		echo CHtml::openTag('div',array(
@@ -273,7 +273,7 @@ class TbExtendedGridView extends TbGridView
 		if ($this->dataProvider instanceof CActiveDataProvider && $data->hasAttribute($attribute))
 			return $data->{$attribute};
 
-		if ($this->dataProvider instanceof CArrayDataProvider)
+		if ($this->dataProvider instanceof CArrayDataProvider || $this->dataProvider instanceof CSqlDataProvider)
 		{
 			if (is_object($data) && isset($data->{$attribute}))
 				return $data->{$attribute};
@@ -298,7 +298,7 @@ class TbExtendedGridView extends TbGridView
 			$key=$this->dataProvider->keyAttribute===null ? $data->getPrimaryKey() : $data->{$this->keyAttribute};
 			return is_array($key) ? implode(',',$key) : $key;
 		}
-		if ($this->dataProvider instanceof CArrayDataProvider)
+		if ($this->dataProvider instanceof CArrayDataProvider || $this->dataProvider instanceof CSqlDataProvider)
 			return is_object($data) ? $data->{$this->dataProvider->keyField} : $data[$this->dataProvider->keyField];
 
 		return null;
